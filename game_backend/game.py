@@ -1,5 +1,7 @@
 from .map_generator import Generator
 from .player import Player
+from .monsters import Monster
+import random as rd
 
 
 class Game:
@@ -12,8 +14,14 @@ class Game:
         self._player = Player()
         self._player.initPos( self._map )
 
+        self._monster = Monster()
+        self._monster.initPosM( self._map)
+
     def getMap(self):
         return self._map
 
     def move(self, dx, dy):
         return self._player.move(dx, dy, self._map)
+
+    def moveM(self, dx = rd.randint(-1,1), dy = rd.randint(-1,1)):
+        return self._monster.moveM(dx, dy, self._map)

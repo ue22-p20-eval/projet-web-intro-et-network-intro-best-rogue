@@ -1,18 +1,16 @@
 import random as rd
 
-
 class Monster:
     def __init__(self, symbol="M"):
         self._symbol = symbol
         self._x = None
         self._y = None
 
-    def initPos(self, _map):
+    def initPosM(self, _map):
         n_row = len(_map)
         #n_col = len(_map[0])
 
-        y_init = rd.randint(0, n_row)
-
+        y_init = rd.randint(0, n_row//2)
         found = False
         while found is False:
             y_init += 1
@@ -27,7 +25,7 @@ class Monster:
 
         _map[self._y][self._x] = self._symbol
 
-    def move(self, dx, dy, map):
+    def moveM(self, dx, dy, map):
         new_x = self._x + dx
         new_y = self._y + dy
 

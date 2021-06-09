@@ -22,6 +22,14 @@ def on_move_msg(json, methods=["GET", "POST"]):
     if ret:
         socketio.emit("response", data)
 
+@socketio.on("moveM")
+def on_move_msgM(json, methods=["GET", "POST"]):
+    print("received moveM ws message")
+
+    data, ret = game.moveM()
+    if ret:
+        socketio.emit("response", data)
+
 
 if __name__=="__main__":
     socketio.run(app, port=5001)

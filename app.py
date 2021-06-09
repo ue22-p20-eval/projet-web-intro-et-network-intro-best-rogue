@@ -28,7 +28,7 @@ def on_move_msgM(json, methods=["GET", "POST"]):
 
     data, ret = game.moveM()
     if ret:
-        socketio.emit("response", data)
+        socketio.emit("responseM", data)
 
 
 if __name__=="__main__":

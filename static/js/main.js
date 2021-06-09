@@ -56,4 +56,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
+    socket.on("responseM", function(data){
+        console.log(data);
+        for( var i=0; i<2; i++){
+            var cell_id = "cell " + data[i].i + "-" + data[i].j;
+            var span_to_modif = document.getElementById(cell_id);
+            span_to_modif.textContent = data[i].content;
+        }
+    });
+
 });

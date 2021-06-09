@@ -1,7 +1,8 @@
+import random as rd
 
 
-class Player:
-    def __init__(self, symbol="@"):
+class Monster:
+    def __init__(self, symbol="M"):
         self._symbol = symbol
         self._x = None
         self._y = None
@@ -10,7 +11,8 @@ class Player:
         n_row = len(_map)
         #n_col = len(_map[0])
 
-        y_init = n_row//2
+        y_init = rd.randint(0, n_row)
+
         found = False
         while found is False:
             y_init += 1

@@ -56,7 +56,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
-    socket.on("responseM", function(data){
+    socket.on("response", function(data){
         console.log(data);
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;

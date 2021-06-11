@@ -15,7 +15,9 @@ CHARACTER_TILES = {'stone': '#',
 
                     'floor': '.',
 
-                    'wall': '#'}
+                    'wall': '#',
+                    
+                    'coin': '$'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -32,6 +34,8 @@ class Generator():
         self.room_list = []
         self.corridor_list = []
         self.tiles_level = []
+        self.coins_x = []
+        self.coins_y = []
     
     def gen_room(self):
         x, y, w, h = 0, 0, 0, 0
@@ -244,6 +248,20 @@ class Generator():
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)
         #[print(row) for row in self.tiles_level]
+
+    def gen_coins(self):
+        """Disposition aléatoire de huit pièces au sol"""
+        for i in range(8):
+            place = False
+            while not place:
+                x = random.randint(0,self.width)
+                y = random.randint(0,self.height)
+                if self.tiles_level[y][x] == '.':
+                    place = True
+                    break
+            self.coins_x.append(x)
+            self.coins_y.append(y)
+            self.tiles_level[y][x] = '$'
 
 if __name__ == '__main__':
     gen = Generator()

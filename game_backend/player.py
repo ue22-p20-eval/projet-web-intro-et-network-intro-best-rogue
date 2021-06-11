@@ -1,5 +1,3 @@
-
-
 class Player:
     def __init__(self, symbol="@"):
         self._symbol = symbol
@@ -27,48 +25,28 @@ class Player:
 
         _map[self._y][self._x] = self._symbol
 
-<<<<<<< HEAD
-=======
 
     def money(self):
         if map[self._x][self._y] == "$":
             self._money += 1
-        data2 = [{"money":f"{self._money}"}]
-        return data2
-
+        
 
     def life(self):
         if map[self._x][self._y] == "M":
             self._life -= 1
 
 
->>>>>>> 767fe6f815772d6237555478c555f2782ff0429d
     def move(self, dx, dy, map):
         new_x = self._x + dx
         new_y = self._y + dy
 
-        if map[new_y][new_x] == "." :
+        if map[new_y][new_x] == "." or map[new_y][new_x] == "x" :
             ret =True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
-            
             self._x = new_x
             self._y = new_y
-        elif map[new_y][new_x] == "$" :
-            ret = True
-            map[new_y][new_x] = self._symbol
-            map[self._y][self._x] = "."
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
-            self._x = new_x
-            self._y = new_y
-            self._money += 1
-        elif map[new_y][new_x] == "M" :
-            ret = True
-            map[new_y][new_x] = self._symbol
-            map[self._y][self._x] = "."
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
-            self._life -= 1
         else:
             ret = False
             data = []

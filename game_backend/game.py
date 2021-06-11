@@ -22,9 +22,6 @@ class Game:
 
     def move(self, dx, dy):
         return self._player.move(dx, dy, self._map)
-    
-    def updateMoney(self):
-        return self._player.money()
 
     def moveM(self, dx = rd.randint(-1,1), dy = rd.randint(-1,1)):
         return self._monster.moveM(dx, dy, self._map)

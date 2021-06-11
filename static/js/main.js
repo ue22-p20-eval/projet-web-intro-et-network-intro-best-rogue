@@ -47,14 +47,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
     };
 
 
-    socket.on("response", function(data, data2){
+    socket.on("response", function(data){
         console.log(data);
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data[i].content;
-            var golds_td = document.getElementById("golds");
-            golds_td.textContent = data2;
         }
     });
 

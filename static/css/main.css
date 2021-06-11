@@ -2,6 +2,12 @@ body{
     background-color: rgb(255, 193, 58);
 }
 
+.title{
+    font-family: serif;
+    color:rgb(255, 0, 0);
+    font-size: 20px;
+}
+
 .flexbox{
     display: flex;
     flex-direction: row;
@@ -20,4 +26,10 @@ body{
     background-color: black;
     opacity: 0.75;
     color: rgb(255, 0, 0);
+}
+
+.parameters{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin: 20px;
 }

@@ -5,7 +5,7 @@
         <script type="text/javascript" src={{ url_for("static", filename="js/main.js") }}></script>
     </head>
     <body>
-        <div> <b> Rogue Flask </b></div>
+        <div class="title"> Rogue Flask </div>
 
         <div class="flexbox">
             <div class="thekeypad">
@@ -20,7 +20,7 @@
                 <div class="key"></div>
             </div>
 
-            <div id="console" style="font-family: monospace;">
+            <div id="console" style="font-family:monospace;">
                 {% for i in range(n_row) %}
                 <div style="height:18px">
                     {% for j in range(n_col) %}
@@ -28,6 +28,13 @@
                     {% endfor %}
                 </div>
                 {% endfor %}
+            </div>
+
+            <div class="parameters">
+                <div class="life">
+                </div>
+                <div class="money">
+                </div>
             </div>
         </div>
 

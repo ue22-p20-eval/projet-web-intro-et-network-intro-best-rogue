@@ -31,7 +31,9 @@ class Player:
     def money(self):
         if map[self._x][self._y] == "$":
             self._money += 1
-        
+        data2 = [{"money":f"{self._money}"}]
+        return data2
+
 
     def life(self):
         if map[self._x][self._y] == "M":
@@ -47,6 +49,7 @@ class Player:
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}]
+            
             self._x = new_x
             self._y = new_y
         else:

@@ -1,5 +1,5 @@
 body{
-    background-color: slategray;
+    background-color: rgb(235, 146, 63);
 }
 
 .flexbox{
@@ -19,5 +19,5 @@ body{
 .keypad_btn{
     background-color: black;
     opacity: 0.75;
-    color: cyan;
+    color: rgb(255, 0, 0);
 }

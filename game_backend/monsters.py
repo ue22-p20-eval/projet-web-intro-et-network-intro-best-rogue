@@ -9,8 +9,8 @@ class Monster:
         self._dy = None
 
     def initPos(self, _map, height, width):
-        y_init = random.randint(0, height-1)  
-        x_init = random.randint(0, width-1)
+        y_init = rd.randint(0, height-1)  
+        x_init = rd.randint(0, width-1)
 
         self._x = x_init
         self._y = y_init

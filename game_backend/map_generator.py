@@ -10,6 +10,7 @@
 
 from __future__ import print_function
 import random
+from .monsters import Monster
 
 CHARACTER_TILES = {'stone': '#',
 
@@ -44,6 +45,13 @@ class Generator():
         x = random.randint(1, (self.width - w - 1))
         y = random.randint(1, (self.height - h - 1))
         return [x, y, w, h]
+
+    def gen_monster(self,game):
+        monsters = [Monster(1) for i in range(4)]
+        for monster in monsters:
+            monster.initPos(game._map, game.height, game.width)
+        return monsters
+
 
     def room_overlapping(self, room, room_list):
         x = room[0]

@@ -14,7 +14,7 @@ class Game:
         self._player = Player()
         self._player.initPos( self._map )
 
-        #self._Monster = self._generator.gen_monster(self)
+        self._Monster = self._generator.gen_monster(self)
 
     def getMap(self):
         return self._map

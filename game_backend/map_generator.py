@@ -10,6 +10,7 @@
 
 from __future__ import print_function
 import random
+from .monsters import Monster
 
 CHARACTER_TILES = {'stone': '#',
 
@@ -46,7 +47,7 @@ class Generator():
         return [x, y, w, h]
 
     def gen_monster(self,game):
-        monsters = [Monster(game.level) for i in range(4)]
+        monsters = [Monster(1) for i in range(4)]
         for monster in monsters:
             monster.initPos(game._map, game.height, game.width)
         return monsters

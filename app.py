@@ -1,10 +1,19 @@
 from flask import Flask, render_template 
 from flask_socketio import SocketIO
 from game_backend import Game
+from time import time
+import json
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 game = Game()
+
+global move_time
+move_time = time()
+global attack_time
+attack_time = time()
+global firemove_time
+firemove_time = time()
 
 
 @app.route("/")
@@ -22,13 +31,14 @@ def on_move_msg(json, methods=["GET", "POST"]):
     if ret:
         socketio.emit("response", data)
 
-@socketio.on("moveM")
-def on_move_msgM(json, methods=["GET", "POST"]):
-    print("received moveM ws message")
-
-    data, ret = game.moveM()
-    if ret:
-        socketio.emit("responseM", data)
+@socketio.on("monster_move")
+def monster_move():
+    global move_time
+    if time()-move_time > 0.2:
+        move_time = time()
+        data_list = game.update_Monster()
+        N = len(data_list)
+        socketio.emit("monster_response", json.dumps([N, data_list]))
 
 
 

@@ -10,10 +10,7 @@ game = Game()
 
 global move_time
 move_time = time()
-global attack_time
-attack_time = time()
-global firemove_time
-firemove_time = time()
+
 
 
 @app.route("/")

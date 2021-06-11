@@ -10,7 +10,8 @@ class Game:
         self._generator.gen_level()
         self._generator.gen_tiles_level()
         self._map = self._generator.tiles_level
-
+        self.height = self._generator.height
+        self.width = self._generator.width
         self._player = Player()
         self._player.initPos( self._map )
 
@@ -28,6 +29,6 @@ class Game:
             data = monster.moveM(self._map)
             data_list.append(data)
         return data_list
-        
+
     def moveM(self, dx = rd.randint(-1,1), dy = rd.randint(-1,1)):
         return self._monster.moveM(dx, dy, self._map)

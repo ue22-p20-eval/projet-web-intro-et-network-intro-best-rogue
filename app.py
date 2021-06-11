@@ -17,10 +17,10 @@ def on_move_msg(json, methods=["GET", "POST"]):
     print("received move ws message")
     dx = json['dx']
     dy = json["dy"]
-
+    data2 = game.updateMoney()
     data, ret = game.move(dx,dy)
     if ret:
-        socketio.emit("response", data)
+        socketio.emit("response", data, data2)
 
 @socketio.on("moveM")
 def on_move_msgM(json, methods=["GET", "POST"]):

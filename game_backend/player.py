@@ -35,7 +35,7 @@ class Player:
 
     def life(self):
         if map[self._x][self._y] == "M":
-            self._money -= 1
+            self._life -= 1
 
 
     def move(self, dx, dy, map):

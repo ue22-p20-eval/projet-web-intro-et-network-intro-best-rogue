@@ -45,7 +45,52 @@
                 socket.emit("monster_move");
             }
 
+            var symToimg = new Map();
+            symToimg.set(".",floor);
+            symToimg.set("#",wall);
             
+            symToimg.set("@",player_south);
+            symToimg.set("X",monstre);
+            
+            function component(element, x, y) {
+                ctx = myGameArea.context;
+                
+                ctx.drawImage(element,x, y);
+            }
+
+            var socket = io.connect("http://" + document.domain + ":" + location.port );
+            
+            window.addEventListener("DOMContentLoaded", (event) => {
+
+
+                socket.on("monster_response", function(data){
+                    data = JSON.parse(data)
+                    for (var i = 0; i < data[0]; i++){
+                        var prev_pos_x = data[1][i][0].j;
+                        var prev_pos_y = data[1][i][0].i;
+                        var new_pos_x = data[1][i][1].j;
+                        var new_pos_y = data[1][i][1].i;
+                        var dx = data[1][i][2][1];
+                        var dy = data[1][i][2][2];
+                        component(symToimg.get(data[1][i][0].content),prev_pos_x*res,prev_pos_y*res)
+                        if ( dx == 1){
+                            component(monstre,new_pos_x*res,new_pos_y*res)
+                        }
+                        else{
+                            if (dx == -1){
+                                component(monstre,new_pos_x*res,new_pos_y*res)
+                            }
+                            else {
+                                if ( dy == 1){
+                                    component(monstre,new_pos_x*res,new_pos_y*res)
+                                }
+                                else {
+                                    component(monstre,new_pos_x*res,new_pos_y*res)
+                                }
+                            }
+                        }
+                    }
+                    setTimeout(move_monster,200);
         </script>
 
     </body>

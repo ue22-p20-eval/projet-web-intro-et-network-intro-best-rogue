@@ -11,6 +11,7 @@
 from __future__ import print_function
 import random
 from .monsters import Monster
+from .player import Cake
 
 CHARACTER_TILES = {'stone': '#',
 
@@ -286,6 +287,11 @@ class Generator():
         monster = Monster()
         monster.initPos(game._map, self.height, self.width)
         return monster
+
+    def gen_cake(self,game):
+        cake = Cake()
+        cake.initPos(game._map)
+        return cake
 
 if __name__ == '__main__':
     gen = Generator()

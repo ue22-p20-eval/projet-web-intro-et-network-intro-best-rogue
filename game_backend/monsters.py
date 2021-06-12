@@ -54,7 +54,7 @@ class Monster:
                 ret =True
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
-                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx]]
+                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx],self._life]
                 self._x = new_x
                 self._y = new_y
                 self._dx = dx
@@ -68,10 +68,10 @@ class Monster:
                     if not self.is_dead():
                         map[new_y][new_x] = "@"
                         map[self._y][self._x] = self._symbol
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [0,0]]
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [0,0], self._life]
                     else :
                         self.die(map)
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None]]
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None],self._life]
                 else:
                     player.game_over()
 

@@ -22,8 +22,10 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy)
-    data2, ret2 = game.moveM(map)
+    m1, m2 = game.move(dx,dy)
+    data, ret = m1[0], m1[1]
+    data2, ret2 = m2[0], m2[1]
+    #data2, ret2 = game.moveM()
     if ret:
         socketio.emit("response", data)
     if ret2:

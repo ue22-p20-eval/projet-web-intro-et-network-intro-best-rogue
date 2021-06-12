@@ -10,7 +10,7 @@ class Monster:
         self._y = None
         self._dx = None
         self._dy = None
-        self._life = 4
+        self._life = 2
 
     def initPos(self, _map, height, width):
         y_init = rd.randint(0, height-1)  
@@ -54,7 +54,7 @@ class Monster:
                 ret =True
                 map[new_y][new_x] = self._symbol
                 map[self._y][self._x] = "."
-                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx],self._life]
+                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx], self._life]
                 self._x = new_x
                 self._y = new_y
                 self._dx = dx
@@ -71,7 +71,7 @@ class Monster:
                         data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [0,0], self._life]
                     else :
                         self.die(map)
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None],self._life]
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None], self._life]
                 else:
                     player.game_over()
 

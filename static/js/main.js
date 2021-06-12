@@ -53,7 +53,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 
 
-    socket.on("response", function(data, data2){
+    socket.on("response", function(data){
         console.log(data);
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
@@ -65,15 +65,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         var span_to_modif = document.getElementById("money");
         span_to_modif.textContent = coins;
         var span_to_modif = document.getElementById("life");
-        span_to_modif.textContent = life;
-<<<<<<< HEAD
-        var monster_life = data2[3];
-        var span_to_modif = document.getElementById("monster_life");
-        span_to_modif.textContent = monster_life;
-=======
-        
->>>>>>> 0c6df2200c917f78c74f26fa70e31d79b4e206bd
-        
+        span_to_modif.textContent = life;  
     });
 
     socket.on("responseM", function(data2){

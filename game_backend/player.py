@@ -65,3 +65,29 @@ class Player:
             ret = False
             data = []
         return data, ret
+
+class Cake:
+    def __init__(self, symbol="C"):
+        self._symbol = symbol
+        self._x = None
+        self._y = None
+
+
+    def initPos(self, _map):
+        n_row = len(_map)
+        #n_col = len(_map[0])
+
+        y_init = 3*n_row//4
+        found = False
+        while found is False:
+            y_init -= 1
+            for i,c in enumerate(_map[y_init]):
+                if c == ".":
+                    x_init = i
+                    found = True
+                    break
+
+        self._x = x_init
+        self._y = y_init
+
+        _map[self._y][self._x] = self._symbol

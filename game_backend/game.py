@@ -1,5 +1,5 @@
 from .map_generator import Generator
-from .player import Player
+from .player import Player, Cake
 from .monsters import Monster
 import random as rd
 

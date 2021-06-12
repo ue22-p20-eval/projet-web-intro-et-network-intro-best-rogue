@@ -29,8 +29,8 @@ class Player:
     def is_dead(self):
         return self._life <= 0
 
-    def game_over(self):
-        return None
+    #def game_over(self):
+    #    return None
 
     def move(self, dx, dy, map):
         new_x = self._x + dx

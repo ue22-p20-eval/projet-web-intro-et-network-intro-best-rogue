@@ -46,13 +46,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
-    var game_over = document.getElementById("game_over");
-    game_over.style.display = 'none';
-    var div_to_hide = document.getElementById("flexbox");
-    div_to_hide.style.display = 'flex';
-
-
-
     socket.on("response", function(data, data2){
         console.log(data);
         for( var i=0; i<2; i++){
@@ -75,9 +68,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data2[i].content;
         }
-        var monster_life = data2[3];
-        var span_to_modif = document.getElementById("monster_life");
-        span_to_modif.textContent = monster_life;
+        
 
     });
 

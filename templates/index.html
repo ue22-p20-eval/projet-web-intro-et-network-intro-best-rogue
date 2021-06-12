@@ -45,18 +45,6 @@
                 socket.emit("monster_move");
             }
 
-            var symToimg = new Map();
-            symToimg.set(".",floor);
-            symToimg.set("#",wall);
-            
-            symToimg.set("@",player_south);
-            symToimg.set("X",monstre);
-            
-            function component(element, x, y) {
-                ctx = myGameArea.context;
-                
-                ctx.drawImage(element,x, y);
-            }
 
             var socket = io.connect("http://" + document.domain + ":" + location.port );
             

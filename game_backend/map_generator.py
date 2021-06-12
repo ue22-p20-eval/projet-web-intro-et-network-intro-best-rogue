@@ -18,7 +18,9 @@ CHARACTER_TILES = {'stone': '#',
 
                     'wall': '#',
                     
-                    'coins': '$'}
+                    'coins': '$',
+                    
+                    'potions': 'P'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -251,6 +253,15 @@ class Generator():
                     if n>0.97:
                         self.level[room[1] + c][room[0] + b] = 'coins'
 
+    def gen_potions(self):
+        """Disposition aléatoire de potions de vie au sol"""
+        for room_num, room in enumerate(self.room_list):
+            for b in range(room[2]):
+                for c in range(room[3]):
+                    n = random.random()
+                    if n>0.995:
+                        self.level[room[1] + c][room[0] + b] = 'potions'
+
 
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):
@@ -264,6 +275,8 @@ class Generator():
                     tmp_tiles.append(self.tiles['wall'])
                 if col == 'coins':
                     tmp_tiles.append(self.tiles['coins'])
+                if col == 'potions':
+                    tmp_tiles.append(self.tiles['potions'])
             self.tiles_level.append(tmp_tiles)
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)
@@ -278,6 +291,7 @@ if __name__ == '__main__':
     gen = Generator()
     gen.gen_coins()
     gen.gen_level()
+    gen.gen_potions
     gen.gen_tiles_level()
     ###
     

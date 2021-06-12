@@ -10,7 +10,7 @@ class Monster:
         self._y = None
         self._dx = None
         self._dy = None
-        self._life = 4
+        self._life = 2
 
     def initPos(self, _map, height, width):
         y_init = rd.randint(0, height-1)  

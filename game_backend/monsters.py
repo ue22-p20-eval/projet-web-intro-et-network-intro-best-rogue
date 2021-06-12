@@ -18,6 +18,7 @@ class Monster:
         found = False
         while found is False:
             y_init += 1
+            x_init += 1
             for i,c in enumerate(_map[y_init]):
                 if c == ".":
                     x_init = i
@@ -63,7 +64,6 @@ class Monster:
                 ret = True
                 self._life -= 1
                 player._life -= 1
-                print(player._life)
                 if not player.is_dead():
                     if not self.is_dead():
                         map[new_y][new_x] = "@"

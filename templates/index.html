@@ -37,6 +37,16 @@
                 </div>
             </div>
         </div>
+        <script>
+            var monstre = new Image();
+            monstre.src = '../static/images/monstre.png'
+
+            function move_monster(){
+                socket.emit("monster_move");
+            }
+
+            
+        </script>
 
     </body>
 </html>

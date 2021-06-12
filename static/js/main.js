@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         var span_to_modif = document.getElementById("money");
         span_to_modif.textContent = coins;
         var span_to_modif = document.getElementById("life");
-        span_to_modif.textContent = life;  
+        span_to_modif.textContent = life;    
     });
 
     socket.on("responseM", function(data2){

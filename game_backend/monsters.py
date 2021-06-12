@@ -73,7 +73,7 @@ class Monster:
                         self.die(map)
                         data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None],self._life]
                 else:
-                    player.game_over()
+                    #player.game_over()
                     ret = False
                     data = []
 

@@ -54,6 +54,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data[i].content;
         }
+        var coins = data[2];
+        var life = data[3];
+        var span_to_modif = document.getElementById("money");
+        span_to_modif.textContent = coins;
+        var span_to_modif = document.getElementById("life");
+        span_to_modif.textContent = life;
+        
     });
 
 

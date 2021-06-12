@@ -1,12 +1,13 @@
 from flask import Flask, render_template 
 from flask_socketio import SocketIO
-from game_backend import Game
+from game_backend import Game, player
 from time import time
 import json
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 game = Game()
+play = player.Player()
 
 global move_time
 move_time = time()
@@ -16,7 +17,7 @@ move_time = time()
 @app.route("/")
 def index():
     map = game.getMap()
-    return render_template("index.html", mapdata=map, n_row=len(map), n_col=len(map[0]) )
+    return render_template("index.html", mapdata=map, n_row=len(map), n_col=len(map[0]), money= play._money, life = play._life)
 
 @socketio.on("move")
 def on_move_msg(json, methods=["GET", "POST"]):

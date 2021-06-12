@@ -246,6 +246,7 @@ class Generator():
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
 
+
     def gen_coins(self):
         """Disposition aléatoire de pièces au sol"""
         for room_num, room in enumerate(self.room_list):
@@ -254,6 +255,7 @@ class Generator():
                     n = random.random()
                     if n>0.97:
                         self.level[room[1] + c][room[0] + b] = 'coins'
+
 
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):

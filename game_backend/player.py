@@ -1,3 +1,4 @@
+
 class Player:
     def __init__(self, symbol="@"):
         self._symbol = symbol
@@ -24,11 +25,17 @@ class Player:
         self._y = y_init
 
         _map[self._y][self._x] = self._symbol
+    
+    def is_dead(self):
+        return self._life <= 0
 
+    def game_over(self):
+        return None
 
     def move(self, dx, dy, map):
         new_x = self._x + dx
         new_y = self._y + dy
+        #print(self._life)
 
         if map[new_y][new_x] == "." :
             ret =True
@@ -37,6 +44,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
+
         elif map[new_y][new_x] == "$" :
             ret = True
             map[new_y][new_x] = self._symbol
@@ -45,14 +53,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
-            
-        elif map[new_y][new_x] == "M" :
-            ret = True
-            map[new_y][new_x] = "M"
-            map[self._y][self._x] = self._symbol
-            self._life -= 1
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"M"}, self._money, self._life]
-        
+
         elif map[new_y][new_x] == "P" :
             ret = True
             map[new_y][new_x] = self._symbol
@@ -61,6 +62,10 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
+
+        elif map[new_y][new_x] == "M":
+            ret = True
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"M"}, self._money, self._life]
 
         else:
             ret = False

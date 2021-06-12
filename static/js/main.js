@@ -46,6 +46,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
+    var game_over = document.getElementById("game_over");
+    game_over.style.display = 'none';
+    var div_to_hide = document.getElementById("flexbox");
+    div_to_hide.style.display = 'flex';
+
+
 
     socket.on("response", function(data, data2){
         console.log(data);
@@ -60,9 +66,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
         span_to_modif.textContent = coins;
         var span_to_modif = document.getElementById("life");
         span_to_modif.textContent = life;
+<<<<<<< HEAD
         var monster_life = data2[3];
         var span_to_modif = document.getElementById("monster_life");
         span_to_modif.textContent = monster_life;
+=======
+        
+>>>>>>> 0c6df2200c917f78c74f26fa70e31d79b4e206bd
         
     });
 
@@ -73,6 +83,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data2[i].content;
         }
+        var monster_life = data2[3];
+        var span_to_modif = document.getElementById("monster_life");
+        span_to_modif.textContent = monster_life;
+
     });
 
 });

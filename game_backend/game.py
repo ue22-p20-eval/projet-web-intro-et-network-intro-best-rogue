@@ -9,6 +9,7 @@ class Game:
         self._generator = Generator(width=width, height=height)
         self._generator.gen_level()
         self._generator.gen_coins()
+        self._generator.gen_potions()
         self._generator.gen_tiles_level()
         self._map = self._generator.tiles_level
         self.height = self._generator.height

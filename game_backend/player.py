@@ -37,6 +37,7 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
+            
         elif map[new_y][new_x] == "$" :
             ret = True
             map[new_y][new_x] = self._symbol
@@ -52,6 +53,15 @@ class Player:
             map[self._y][self._x] = "."
             self._life -= 1
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
+        
+        elif map[new_y][new_x] == "P" :
+            ret = True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            self._life += 1
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
+            self._x = new_x
+            self._y = new_y
             
         else:
             ret = False

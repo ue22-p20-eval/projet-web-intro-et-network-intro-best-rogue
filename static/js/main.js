@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     var div_to_hide = document.getElementById("flexbox");
     div_to_hide.style.display = 'flex';
 
-    
+
 
     socket.on("response", function(data, data_m){
         console.log(data);
@@ -66,9 +66,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         span_to_modif.textContent = coins;
         var span_to_modif = document.getElementById("life");
         span_to_modif.textContent = life;
-        var monster_life = data_m[3];
-        var span_to_modif = document.getElementById("monster_life");
-        span_to_modif.textContent = monster_life;
+        
         
     });
 
@@ -79,6 +77,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
             var span_to_modif = document.getElementById(cell_id);
             span_to_modif.textContent = data2[i].content;
         }
+        var monster_life = data2[3];
+        var span_to_modif = document.getElementById("monster_life");
+        span_to_modif.textContent = monster_life;
+
     });
 
 });

@@ -24,7 +24,7 @@ class Monster:
     
         return dx,dy
 
-    def moveM(self, map):
+    def moveM(self,map):
         dx, dy = self.dxdy()
         new_x = self._x + dx
         new_y = self._y + dy

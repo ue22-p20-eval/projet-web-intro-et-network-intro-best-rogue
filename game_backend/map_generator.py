@@ -48,10 +48,9 @@ class Generator():
         return [x, y, w, h]
 
     def gen_monster(self,game):
-        monsters = [Monster(1) for i in range(4)]
-        for monster in monsters:
-            monster.initPos(game._map, self.height, self.width)
-        return monsters
+        monster = Monster()
+        monster.initPos(game._map, self.height, self.width)
+        return monster
 
 
     def room_overlapping(self, room, room_list):

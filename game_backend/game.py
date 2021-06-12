@@ -24,12 +24,5 @@ class Game:
     def move(self, dx, dy):
         return self._player.move(dx, dy, self._map)
 
-    def update_Monster(self):
-        data_list = []
-        for monster in self._Monster:
-            data = monster.moveM(self._map)
-            data_list.append(data)
-        return data_list
-
-    def moveM(self, dx = rd.randint(-1,1), dy = rd.randint(-1,1)):
-        return self._monster.moveM(dx, dy, self._map)
+    def moveM(self,map):
+        return self._Monster.moveM(map)

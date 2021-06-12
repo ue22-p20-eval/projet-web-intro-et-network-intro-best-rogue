@@ -1,6 +1,6 @@
 
 class Player:
-    def __init__(self, symbol="@"):
+    def __init__(self, symbol=chr(0x1F471)):
         self._symbol = symbol
         self._x = None
         self._y = None
@@ -16,7 +16,7 @@ class Player:
         while found is False:
             y_init += 1
             for i,c in enumerate(_map[y_init]):
-                if c == ".":
+                if c == chr(0x2B1C):
                     x_init = i
                     found = True
                     break
@@ -37,35 +37,35 @@ class Player:
         new_y = self._y + dy
         #print(self._life)
 
-        if map[new_y][new_x] == "." :
+        if map[new_y][new_x] == chr(0x2B1C) :
             ret =True
             map[new_y][new_x] = self._symbol
-            map[self._y][self._x] = "."
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
+            map[self._y][self._x] = chr(0x2B1C)
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == "$" :
+        elif map[new_y][new_x] == chr(0x1F4A8) :
             ret = True
             map[new_y][new_x] = self._symbol
-            map[self._y][self._x] = "."
+            map[self._y][self._x] = chr(0x2B1C)
             self._money += 1
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == "P" :
+        elif map[new_y][new_x] == chr(0x1F476) :
             ret = True
             map[new_y][new_x] = self._symbol
-            map[self._y][self._x] = "."
+            map[self._y][self._x] = chr(0x2B1C)
             self._life += 1
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == "M":
+        elif map[new_y][new_x] == chr(0x1F470):
             ret = True
-            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"M"}, self._money, self._life]
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F470)}, self._money, self._life]
 
         else:
             ret = False
@@ -88,7 +88,7 @@ class Cake:
         while found is False:
             y_init -= 1
             for i,c in enumerate(_map[y_init]):
-                if c == ".":
+                if c == chr(0x2B1C):
                     x_init = i
                     found = True
                     break

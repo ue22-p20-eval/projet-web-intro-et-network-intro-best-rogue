@@ -13,15 +13,15 @@ import random
 from .monsters import Monster
 from .player import Cake
 
-CHARACTER_TILES = {'stone': '#',
+CHARACTER_TILES = {'stone': chr(0x2B1B),
 
-                    'floor': '.',
+                    'floor': chr(0x2B1C),
 
-                    'wall': '#',
+                    'wall': chr(0x2B1B),
                     
-                    'coins': '$',
+                    'coins': chr(0x1F4A8),
                     
-                    'potions': 'P'}
+                    'potions': chr(0x1F476)}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):

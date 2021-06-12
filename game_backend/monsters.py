@@ -4,7 +4,7 @@ from .player import Player
 player = Player()
 
 class Monster:
-    def __init__(self, symbol="M"):
+    def __init__(self, symbol=chr(0x1F470)):
         self._symbol = symbol
         self._x = None
         self._y = None
@@ -20,7 +20,7 @@ class Monster:
             y_init += 1
             x_init += 1
             for i,c in enumerate(_map[y_init]):
-                if c == ".":
+                if c == chr(0x2B1C):
                     x_init = i
                     found = True
                     break
@@ -40,7 +40,7 @@ class Monster:
         return self._life <= 0
 
     def die(self,map):
-        map[self._y][self._x] = "."
+        map[self._y][self._x] = chr(0x2B1C)
         self._x = None
         self._y = None
     
@@ -50,28 +50,28 @@ class Monster:
             new_x = self._x + dx
             new_y = self._y + dy
             
-            if map[new_y][new_x] == ".":
+            if map[new_y][new_x] == chr(0x2B1C):
                 ret =True
                 map[new_y][new_x] = self._symbol
-                map[self._y][self._x] = "."
-                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx],self._life]
+                map[self._y][self._x] = chr(0x2B1C)
+                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx],self._life]
                 self._x = new_x
                 self._y = new_y
                 self._dx = dx
                 self._dy = dy
 
-            elif map[new_y][new_x] == "@" :
+            elif map[new_y][new_x] == chr(0x1F471) :
                 ret = True
                 self._life -= 1
                 player._life -= 1
                 if not player.is_dead():
                     if not self.is_dead():
-                        map[new_y][new_x] = "@"
+                        map[new_y][new_x] = chr(0x1F471)
                         map[self._y][self._x] = self._symbol
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [0,0], self._life]
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F471)}, [0,0], self._life]
                     else :
                         self.die(map)
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":"@"}, [None,None],self._life]
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F471)}, [None,None],self._life]
                 else:
                     #player.game_over()
                     ret = False

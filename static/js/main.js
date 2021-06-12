@@ -46,6 +46,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
+    var game_over = document.getElementById("game_over");
+    game_over.style.display = 'none';
+    var div_to_hide = document.getElementById("flexbox");
+    div_to_hide.style.display = 'flex';
+
+    
 
     socket.on("response", function(data){
         console.log(data);

@@ -54,7 +54,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F476) :
+        elif map[new_y][new_x] == chr(0x1F4A4) :
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
@@ -73,7 +73,7 @@ class Player:
         return data, ret
 
 class Cake:
-    def __init__(self, symbol="C"):
+    def __init__(self, symbol=chr(0x1F476)):
         self._symbol = symbol
         self._x = None
         self._y = None

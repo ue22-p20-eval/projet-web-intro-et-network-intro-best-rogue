@@ -9,8 +9,6 @@ socketio = SocketIO(app)
 game = Game()
 play = player.Player()
 
-global move_time
-move_time = time()
 
 
 
@@ -25,19 +23,14 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    data, ret = game.move(dx,dy)
+    m1, m2 = game.move(dx,dy)
+    data, ret = m1[0], m1[1]
+    data2, ret2 = m2[0], m2[1]
+    #data2, ret2 = game.moveM()
     if ret:
         socketio.emit("response", data)
-
-@socketio.on("monster_move")
-def monster_move():
-    global move_time
-    if time()-move_time > 0.2:
-        move_time = time()
-        data_list = game.update_Monster()
-        N = len(data_list)
-        socketio.emit("monster_response", json.dumps([N, data_list]))
-
+    if ret2:
+        socketio.emit("responseM", data2)
 
 
 if __name__=="__main__":

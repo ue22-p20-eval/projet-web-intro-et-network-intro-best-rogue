@@ -47,11 +47,6 @@ class Generator():
         y = random.randint(1, (self.height - h - 1))
         return [x, y, w, h]
 
-    def gen_monster(self,game):
-        monsters = [Monster(1) for i in range(4)]
-        for monster in monsters:
-            monster.initPos(game._map, self.height, self.width)
-        return monsters
 
 
     def room_overlapping(self, room, room_list):
@@ -274,7 +269,10 @@ class Generator():
         #print('\nCorridor List: ', self.corridor_list)
         #[print(row) for row in self.tiles_level]
 
-    
+    def gen_monster(self,game):
+        monster = Monster()
+        monster.initPos(game._map, self.height, self.width)
+        return monster
 
 if __name__ == '__main__':
     gen = Generator()

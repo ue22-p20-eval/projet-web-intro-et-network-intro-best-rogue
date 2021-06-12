@@ -46,14 +46,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
-    var game_over = document.getElementById("game_over");
-    game_over.style.display = 'none';
-    var div_to_hide = document.getElementById("flexbox");
-    div_to_hide.style.display = 'flex';
-
-
-
-    socket.on("response", function(data){
+    socket.on("response", function(data, data2){
         console.log(data);
         for( var i=0; i<2; i++){
             var cell_id = "cell " + data[i].i + "-" + data[i].j;
@@ -65,7 +58,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         var span_to_modif = document.getElementById("money");
         span_to_modif.textContent = coins;
         var span_to_modif = document.getElementById("life");
-        span_to_modif.textContent = life;    
+        span_to_modif.textContent = life;
+    
     });
 
     socket.on("responseM", function(data2){

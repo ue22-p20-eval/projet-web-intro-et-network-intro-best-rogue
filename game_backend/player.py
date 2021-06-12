@@ -3,6 +3,8 @@ class Player:
         self._symbol = symbol
         self._x = None
         self._y = None
+        self._dx = None
+        self._dy = None
         self._money = 0
         self._life = 3
 
@@ -37,6 +39,8 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
+            self._dx = dx
+            self._dy = dy
         elif map[new_y][new_x] == "$" :
             ret = True
             map[new_y][new_x] = self._symbol
@@ -45,14 +49,16 @@ class Player:
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
             self._x = new_x
             self._y = new_y
-            
+            self._dx = dx
+            self._dy = dy
         elif map[new_y][new_x] == "M" :
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = "."
             self._life -= 1
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol}, self._money, self._life]
-            
+            self._dx = dx
+            self._dy = dy
         else:
             ret = False
             data = []

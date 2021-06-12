@@ -16,7 +16,7 @@ class Game:
         self.width = self._generator.width
         self._player = Player()
         self._player.initPos( self._map )
-
+        self._cake = self._generator.gen_cake(self)
         self._Monster = self._generator.gen_monster(self)
 
     def getMap(self):

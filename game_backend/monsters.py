@@ -15,6 +15,7 @@ class Monster:
         found = False
         while found is False:
             y_init += 1
+            x_init +=1
             for i,c in enumerate(_map[y_init]):
                 if c == ".":
                     x_init = i

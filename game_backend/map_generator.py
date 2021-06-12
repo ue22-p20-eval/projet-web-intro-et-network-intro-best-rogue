@@ -18,7 +18,7 @@ CHARACTER_TILES = {'stone': '#',
 
                     'wall': '#',
                     
-                    'coin': '$'}
+                    'coins': '$'}
 
 class Generator():
     def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
@@ -35,8 +35,9 @@ class Generator():
         self.room_list = []
         self.corridor_list = []
         self.tiles_level = []
-        self.coins_x = []
-        self.coins_y = []
+        self.coins_x = None
+        self.coins_y = None
+
     
     def gen_room(self):
         x, y, w, h = 0, 0, 0, 0
@@ -49,7 +50,7 @@ class Generator():
     def gen_monster(self,game):
         monsters = [Monster(1) for i in range(4)]
         for monster in monsters:
-            monster.initPos(game._map, game.height, game.width)
+            monster.initPos(game._map, self.height, self.width)
         return monsters
 
 
@@ -208,6 +209,9 @@ class Generator():
             for b in range(room[2]):
                 for c in range(room[3]):
                     self.level[room[1] + c][room[0] + b] = 'floor'
+
+        #self.gen_coins()
+
         # paint corridors
         for corridor in self.corridor_list:
             x1, y1 = corridor[0]
@@ -242,6 +246,15 @@ class Generator():
                     if self.level[row + 1][col + 1] == 'stone':
                         self.level[row + 1][col + 1] = 'wall'
 
+    def gen_coins(self):
+        """Disposition aléatoire de pièces au sol"""
+        for room_num, room in enumerate(self.room_list):
+            for b in range(room[2]):
+                for c in range(room[3]):
+                    n = random.random()
+                    if n>0.97:
+                        self.level[room[1] + c][room[0] + b] = 'coins'
+
     def gen_tiles_level(self):
         for row_num, row in enumerate(self.level):
             tmp_tiles = []
@@ -252,26 +265,19 @@ class Generator():
                     tmp_tiles.append(self.tiles['floor'])
                 if col == 'wall':
                     tmp_tiles.append(self.tiles['wall'])
+                if col == 'coins':
+                    tmp_tiles.append(self.tiles['coins'])
             self.tiles_level.append(tmp_tiles)
         #print('Room List: ', self.room_list)
         #print('\nCorridor List: ', self.corridor_list)
         #[print(row) for row in self.tiles_level]
 
-    def gen_coins(self):
-        """Disposition aléatoire de huit pièces au sol"""
-        for i in range(8):
-            place = False
-            while not place:
-                x = random.randint(0,self.width)
-                y = random.randint(0,self.height)
-                if self.tiles_level[y][x] == '.':
-                    place = True
-                    break
-            self.coins_x.append(x)
-            self.coins_y.append(y)
-            self.tiles_level[y][x] = '$'
+    
 
 if __name__ == '__main__':
     gen = Generator()
+    gen.gen_coins()
     gen.gen_level()
     gen.gen_tiles_level()
+    ###
+    

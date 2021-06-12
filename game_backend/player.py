@@ -3,8 +3,8 @@ class Player:
         self._symbol = symbol
         self._x = None
         self._y = None
-        self._money = None
-        self._life = None
+        self._money = 0
+        self._life = 3
 
     def initPos(self, _map):
         n_row = len(_map)
@@ -24,16 +24,6 @@ class Player:
         self._y = y_init
 
         _map[self._y][self._x] = self._symbol
-
-
-    def money(self):
-        if map[self._x][self._y] == "$":
-            self._money += 1
-        
-
-    def life(self):
-        if map[self._x][self._y] == "M":
-            self._life -= 1
 
 
     def move(self, dx, dy, map):

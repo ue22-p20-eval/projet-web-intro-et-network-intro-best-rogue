@@ -38,30 +38,16 @@ class Monster:
         new_y = self._y + dy
         
         if map[new_y][new_x] == ".":
-            if self._life > 0:
-                ret =True
-                map[new_y][new_x] = self._symbol
-                map[self._y][self._x] = "."
-                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx]]
-                self._x = new_x
-                self._y = new_y
-                self._dx = dx
-                self._dy = dy
-            else:
-                ret =True
-                self._symbol = "."
-                map[new_y][new_x] = self._symbol
-                map[self._y][self._x] = "."
-                data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx]]
-                self._x = new_x
-                self._y = new_y
-                self._dx = dx
-                self._dy = dy
+            ret =True
+            map[new_y][new_x] = self._symbol
+            map[self._y][self._x] = "."
+            data = [{"i": f"{self._y}", "j":f"{self._x}", "content":"."}, {"i": f"{new_y}", "j":f"{new_x}", "content":self._symbol},[dy,dx]]
+            self._x = new_x
+            self._y = new_y
+            self._dx = dx
+            self._dy = dy
+ 
         else:
-            xm = self._x
-            ym = self._y
-            if (map[xm+1][ym] == "@" or map[xm][ym+1] == "@" or map[xm-1][ym] == "@" or map[xm][ym-1] == "@"):
-                self._life -= 1
             ret = False
             data = []
         return data, ret

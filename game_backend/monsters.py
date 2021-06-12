@@ -32,6 +32,8 @@ class Monster:
         dx,dy = rd.choice([[0, 1], [0, -1], [1, 0], [-1, 0]])
     
         return dx,dy
+
+    
     
     def moveM(self,map):
         dx, dy = self.dxdy()

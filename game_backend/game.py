@@ -26,4 +26,4 @@ class Game:
         return self._player.move(dx, dy, self._map), self._Monster.moveM(self._map)
 
     def moveM(self):
-        return self._Monster.moveM(self._map)
+        return self._Monster.moveM(self._map, self._player)

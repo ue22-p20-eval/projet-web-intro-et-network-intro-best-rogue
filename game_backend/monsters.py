@@ -44,7 +44,7 @@ class Monster:
         self._x = None
         self._y = None
     
-    def moveM(self,map):
+    def moveM(self,map, player):
         if not self.is_dead():
             dx, dy = self.dxdy()
             new_x = self._x + dx

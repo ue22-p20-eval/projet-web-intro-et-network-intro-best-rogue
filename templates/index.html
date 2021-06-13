@@ -9,6 +9,37 @@
         <div class="consignes"> Get back your baby before the Mom hit you!</div>
 
         <div class="flexbox">
+            
+            <div class ="tools">
+                <div class="thekeypad">
+                    <div class="key"></div>
+                    <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"></div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_w" class="keypad_btn" type="button" value="&#9664"></div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_e" class="keypad_btn" type="button" value="&#9654"></div>
+                    <div class="key"></div>
+                    <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
+                    <div class="key"></div>
+                </div>
+                <div class="parameters">
+                    Life
+                    <div id = "life">
+                        {{ life }}
+                    </div>
+                    <br>
+                    Money
+                    <div id="money">
+                        {{ money }}
+                    </div>
+                    <br>
+                    Monster life
+                    <div id ="monster_life">
+                        {{ monster_life}}
+                    </div>
+                
+                </div>
+            </div>
             <div id="console" style="font-family:monospace;">
                 {% for i in range(n_row) %}
                 <div style="height:18px">
@@ -22,36 +53,7 @@
 
         <div class="consignes"> </div>
 
-        <div class ="tools">
-            <div class="thekeypad">
-                <div class="key"></div>
-                <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_w" class="keypad_btn" type="button" value="&#9664"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_e" class="keypad_btn" type="button" value="&#9654"></div>
-                <div class="key"></div>
-                <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
-                <div class="key"></div>
-            </div>
-            <div class="parameters">
-                Life
-                <div id = "life">
-                    {{ life }}
-                </div>
-                <br>
-                Money
-                <div id="money">
-                    {{ money }}
-                </div>
-                <br>
-                Monster life
-                <div id ="monster_life">
-                    {{ monster_life}}
-                </div>
-            
-            </div>
-        </div>
+        
         <div id="game_over">
             <p></p> 
         </div>

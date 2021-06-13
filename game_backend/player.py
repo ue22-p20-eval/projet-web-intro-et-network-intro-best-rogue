@@ -45,7 +45,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F4A8) :
+        elif map[new_y][new_x] == chr(0x1F4B4) :
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)

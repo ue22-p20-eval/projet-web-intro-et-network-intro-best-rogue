@@ -19,7 +19,7 @@ CHARACTER_TILES = {'stone': chr(0x2B1B),
 
                     'wall': chr(0x2B1B),
                     
-                    'coins': chr(0x1F4A8),
+                    'coins': chr(0x1F4B4),
                     
                     'potions': chr(0x1F4A4)}
 

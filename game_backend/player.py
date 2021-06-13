@@ -37,7 +37,7 @@ class Player:
         new_y = self._y + dy
         #print(self._life)
 
-        if map[new_y][new_x] == chr(0x2B1C) :
+        if map[new_y][new_x] == chr(0x2B1C) : #si la nouvelle position est une pièce sans item
             ret =True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
@@ -45,7 +45,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F4B4) :
+        elif map[new_y][new_x] == chr(0x1F4A8) : #si la nouvelle position est une item money
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
@@ -54,7 +54,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F4A4) :
+        elif map[new_y][new_x] == chr(0x1F4A4) : #si la nouvelle position est une item life
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
@@ -63,7 +63,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F470):
+        elif map[new_y][new_x] == chr(0x1F470): #si la nouvelle position est la maman, on ne bouge pas
             ret = True
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F470)}, self._money, self._life]
 
@@ -73,6 +73,7 @@ class Player:
         return data, ret
 
 class Cake:
+    #on ajoute un bébé dans la map
     def __init__(self, symbol=chr(0x1F476)):
         self._symbol = symbol
         self._x = None

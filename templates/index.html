@@ -5,9 +5,24 @@
         <script type="text/javascript" src={{ url_for("static", filename="js/main.js") }}></script>
     </head>
     <body>
-        <div class="title"> Mom vs Dad </div>
+        <div class="title"> <br> Mom vs Dad </br> </div>
+        <div class="consignes"> Get back your baby before the Mom hit you!</div>
 
         <div class="flexbox">
+            <div id="console" style="font-family:monospace;">
+                {% for i in range(n_row) %}
+                <div style="height:18px">
+                    {% for j in range(n_col) %}
+                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{ mapdata[i][j] }} </span>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="consignes"> </div>
+
+        <div class ="tools">
             <div class="thekeypad">
                 <div class="key"></div>
                 <div class="key"><input id="go_n" class="keypad_btn" type="button" value="&#9650"></div>
@@ -19,17 +34,6 @@
                 <div class="key"><input id="go_s" class="keypad_btn" type="button" value="&#9660"></div>
                 <div class="key"></div>
             </div>
-
-            <div id="console" style="font-family:monospace;">
-                {% for i in range(n_row) %}
-                <div style="height:18px">
-                    {% for j in range(n_col) %}
-                    <span id="{{ 'cell {}-{}'.format(i,j) }}"> {{ mapdata[i][j] }} </span>
-                    {% endfor %}
-                </div>
-                {% endfor %}
-            </div>
-
             <div class="parameters">
                 Life
                 <div id = "life">
@@ -43,11 +47,10 @@
                 <br>
                 Monster life
                 <div id ="monster_life">
-                    2
-               </div>
-               <br>
-            </div>
+                    {{ monster_life}}
+                </div>
             
+            </div>
         </div>
         <div id="game_over">
             <p></p> 

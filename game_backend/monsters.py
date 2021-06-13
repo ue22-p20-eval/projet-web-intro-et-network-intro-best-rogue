@@ -70,8 +70,8 @@ class Monster:
                         map[self._y][self._x] = self._symbol
                         data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F471)}, [0,0], self._life]
                     else :
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F471)}, [None,None],0]
                         self.die(map)
-                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F471)}, [None,None],self._life]
                 else:
                     #player.game_over()
                     ret = False

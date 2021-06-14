@@ -1,5 +1,5 @@
 from .map_generator import Generator
-from .player import Player, Cake
+from .player import Player, Baby
 from .monsters import Monster
 import random as rd
 
@@ -16,7 +16,7 @@ class Game:
         self.width = self._generator.width
         self._player = Player()
         self._player.initPos( self._map )
-        self._cake = self._generator.gen_cake(self)
+        self.baby = self._generator.gen_baby(self)
         self._Monster = self._generator.gen_monster(self)
 
     def getMap(self):

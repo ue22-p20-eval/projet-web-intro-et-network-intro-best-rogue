@@ -63,6 +63,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
     });
 
+    socket.on("victory", function(data){
+        console.log(data);
+        var span_to_modif = document.getElementById("victory");
+        span_to_modif.textContent = "Victory !";
+    
+    });
+
     socket.on("responseM", function(data2){
         console.log(data2);
         for( var i=0; i<2; i++){

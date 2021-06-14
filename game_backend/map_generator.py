@@ -11,7 +11,7 @@
 from __future__ import print_function
 import random
 from .monsters import Monster
-from .player import Cake
+from .player import Baby
 
 CHARACTER_TILES = {'stone': chr(0x2B1B),
 
@@ -24,7 +24,7 @@ CHARACTER_TILES = {'stone': chr(0x2B1B),
                     'potions': chr(0x1F4A4)}
 
 class Generator():
-    def __init__(self, width=64, height=64, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
+    def __init__(self, width, height, max_rooms=15, min_room_xy=5, max_room_xy=10, rooms_overlap=False, random_connections=1,random_spurs=3, tiles=CHARACTER_TILES):
         self.width = width
         self.height = height
         self.max_rooms = max_rooms
@@ -288,10 +288,10 @@ class Generator():
         monster.initPos(game._map, self.height, self.width)
         return monster
 
-    def gen_cake(self,game):
-        cake = Cake()
-        cake.initPos(game._map)
-        return cake
+    def gen_baby(self,game):
+        baby = Baby()
+        baby.initPos(game._map)
+        return baby
 
 if __name__ == '__main__':
     gen = Generator()

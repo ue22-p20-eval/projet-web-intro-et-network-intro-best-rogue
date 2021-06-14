@@ -31,6 +31,9 @@ def on_move_msg(json, methods=["GET", "POST"]):
         socketio.emit("response", data)
     if ret2:
         socketio.emit("responseM", data2)
+    if len(data) == 1:  #cas de la victoire
+        if data[0] == True: 
+            socketio.emit("victory", data)
   
 
 if __name__=="__main__":

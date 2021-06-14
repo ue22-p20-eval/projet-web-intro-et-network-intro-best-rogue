@@ -66,13 +66,17 @@ class Player:
         elif map[new_y][new_x] == chr(0x1F470): #si la nouvelle position est la maman, on ne bouge pas
             ret = True
             data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F470)}, self._money, self._life]
-
+    
+        elif map[new_y][new_x] == chr(0x1F476): #si la nouvelle position est le bébé, c'est gagné !
+            ret = True
+            victory = True
+            data = [victory]
         else:
             ret = False
             data = []
         return data, ret
 
-class Cake:
+class Baby:
     #on ajoute un bébé dans la map
     def __init__(self, symbol=chr(0x1F476)):
         self._symbol = symbol

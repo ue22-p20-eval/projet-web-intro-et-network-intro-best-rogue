@@ -7,7 +7,7 @@ import json
 app = Flask(__name__)
 socketio = SocketIO(app)
 game = Game()
-play = player.Player()
+play = player.Player(chr(0x1F471))
 
 
 
@@ -23,7 +23,7 @@ def on_move_msg(json, methods=["GET", "POST"]):
     dx = json['dx']
     dy = json["dy"]
 
-    m1, m2 = game.move(dx,dy)
+    m1, m2 = game.move(dx,dy, 0)
     data, ret = m1[0], m1[1]
     data2, ret2 = m2[0], m2[1]
 
@@ -34,7 +34,24 @@ def on_move_msg(json, methods=["GET", "POST"]):
     if len(data) == 1:  #cas de la victoire
         if data[0] == True: 
             socketio.emit("victory", data)
-  
+            
+@socketio.on("move2")
+def on_move_msg(json, methods=["GET", "POST"]):
+    print("received move2 ws message")
+    dx = json['dx']
+    dy = json["dy"]
+
+    m1, m2 = game.move(dx,dy, 1)
+    data, ret = m1[0], m1[1]
+    data2, ret2 = m2[0], m2[1]
+
+    if ret:
+        socketio.emit("response2", data)
+    if ret2:
+        socketio.emit("responseM", data2)
+    if len(data) == 1:  #cas de la victoire
+        if data[0] == True: 
+            socketio.emit("victory", data)
 
 if __name__=="__main__":
     socketio.run(app, port=5001)

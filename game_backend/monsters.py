@@ -1,7 +1,7 @@
 import random as rd
 from .player import Player
 
-player = Player()
+player = Player(chr(0x1F471))
 
 class Monster:
     def __init__(self, symbol=chr(0x1F470)):
@@ -44,7 +44,7 @@ class Monster:
         self._x = None
         self._y = None
     
-    def moveM(self,map, player):
+    def moveM(self,map, players):
         if not self.is_dead():
             dx, dy = self.dxdy()
             new_x = self._x + dx
@@ -60,11 +60,11 @@ class Monster:
                 self._dx = dx
                 self._dy = dy
 
-            elif map[new_y][new_x] == chr(0x1F471) :
+            elif map[new_y][new_x] == chr(0x1F471):  # Player1
                 ret = True
                 self._life -= 1
-                player._life -= 1
-                if not player.is_dead():
+                players[0]._life -= 1
+                if not players[0].is_dead():
                     if not self.is_dead():
                         map[new_y][new_x] = chr(0x1F471)
                         map[self._y][self._x] = self._symbol
@@ -77,6 +77,22 @@ class Monster:
                     ret = False
                     data = []
 
+            elif map[new_y][new_x] == chr(0x1F990):  # Player2
+                ret = True
+                self._life -= 1
+                players[1]._life -= 1
+                if not players[1].is_dead():
+                    if not self.is_dead():
+                        map[new_y][new_x] = chr(0x1F990)
+                        map[self._y][self._x] = self._symbol
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":self._symbol}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F990)}, [0,0], self._life]
+                    else :
+                        data = [{"i": f"{self._y}", "j":f"{self._x}", "content":chr(0x2B1C)}, {"i": f"{new_y}", "j":f"{new_x}", "content":chr(0x1F990)}, [None,None],0]
+                        self.die(map)
+                else:
+                    #player.game_over()
+                    ret = False
+                    data = []
             else:
                 ret = False
                 data = []

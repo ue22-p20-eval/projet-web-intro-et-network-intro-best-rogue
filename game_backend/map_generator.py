@@ -285,7 +285,7 @@ class Generator():
 
     def gen_monster(self,game):
         monster = Monster()
-        monster.initPos(game._map, self.height, self.width)
+        monster.initPos(game._map, self.height//2, self.width//2)
         return monster
 
     def gen_baby(self,game):

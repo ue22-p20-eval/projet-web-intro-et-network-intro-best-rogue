@@ -18,10 +18,25 @@ window.addEventListener("DOMContentLoaded", (event) => {
                 socket.emit("move", {dx:0, dy:1});
                 break;
         }
-
-
     };
-    
+
+    document.onkeydown = function(e2){
+        switch(e2.keyCode){
+            case 81:
+                socket.emit("move2", {dx:-1, dy:0});
+                break;
+            case 90:
+                socket.emit("move2", {dx:0, dy:-1});
+                break;
+            case 68:
+                socket.emit("move2", {dx:1, dy:0});
+                break;
+            case 83:
+                socket.emit("move2", {dx:0, dy:1});
+                break;
+        }
+    };
+
     var btn_n = document.getElementById("go_n");
     btn_n.onclick = function(e) {
         console.log("Clicked on button north");
@@ -46,7 +61,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
-       
+  
     socket.on("response", function(data, data2){
         console.log(data);
         for( var i=0; i<2; i++){
@@ -63,6 +78,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
     });
 
+    socket.on("response2", function(data, data2){
+        console.log(data);
+        for( var i=0; i<2; i++){
+            var cell_id = "cell " + data[i].i + "-" + data[i].j;
+            var span_to_modif = document.getElementById(cell_id);
+            span_to_modif.textContent = data[i].content;
+        }
+        
+    
+    });
     socket.on("victory", function(data){
         console.log(data);
         var span_to_modif = document.getElementById("victory");

@@ -46,6 +46,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         socket.emit("move", {dx:1, dy:0});
     };
 
+       
     socket.on("response", function(data, data2){
         console.log(data);
         for( var i=0; i<2; i++){

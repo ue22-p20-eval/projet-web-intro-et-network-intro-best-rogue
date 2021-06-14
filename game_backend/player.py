@@ -45,7 +45,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F4A8) : #si la nouvelle position est une item money
+        elif map[new_y][new_x] == chr(0x1F4B4) : #si la nouvelle position est une item money
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
@@ -54,7 +54,7 @@ class Player:
             self._x = new_x
             self._y = new_y
 
-        elif map[new_y][new_x] == chr(0x1F4A4) : #si la nouvelle position est une item life
+        elif map[new_y][new_x] == chr(0x1F4A4) : #si la nouvelle position est une item zZz
             ret = True
             map[new_y][new_x] = self._symbol
             map[self._y][self._x] = chr(0x2B1C)
